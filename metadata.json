@@ -1,0 +1,7 @@
+{
+  "name": "NetPractice",
+  "description": "Interactive networking lab and simulation trainer based on NetPractice with 10 challenging levels, IP addressing, subnetting, routing tables, and real-time packet verification.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

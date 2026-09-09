@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --bg-page: #060818;
+  --text-page: #f0f4ff;
+  --text-muted: #94a3b8;
+  --bg-panel: #090d26;
+  --bg-panel-subtle: rgba(255, 255, 255, 0.04);
+  --border-panel: rgba(255, 255, 255, 0.12);
+  --bg-canvas: #050716;
+  --border-canvas: rgba(255, 255, 255, 0.10);
+  --color-grid-dot: #6366f1;
+  --bg-card: rgba(9, 13, 38, 0.88);
+  --bg-input: rgba(0, 0, 0, 0.45);
+  --border-input: rgba(255, 255, 255, 0.15);
+  --text-input: #ffffff;
+  --bg-nav: rgba(8, 13, 39, 0.92);
+  --border-nav: rgba(255, 255, 255, 0.15);
+  --modal-bg: #090d24;
+  --modal-border: rgba(99, 102, 241, 0.3);
+}
+
+html.light,
+[data-theme="light"] {
+  --bg-page: #f8fafc;
+  --text-page: #0f172a;
+  --text-muted: #64748b;
+  --bg-panel: #ffffff;
+  --bg-panel-subtle: #f1f5f9;
+  --border-panel: #e2e8f0;
+  --bg-canvas: #f1f5f9;
+  --border-canvas: #cbd5e1;
+  --color-grid-dot: #94a3b8;
+  --bg-card: rgba(255, 255, 255, 0.96);
+  --bg-input: #ffffff;
+  --border-input: #cbd5e1;
+  --text-input: #0f172a;
+  --bg-nav: rgba(255, 255, 255, 0.96);
+  --border-nav: #cbd5e1;
+  --modal-bg: #ffffff;
+  --modal-border: #cbd5e1;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-page);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Layer elevation on hover and focus for network nodes and canvas cards */
+.network-card {
+  position: absolute;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease, background-color 0.15s ease;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.network-card:hover,
+.network-card:focus-within {
+  z-index: 40 !important;
+}
+
+.network-card input,
+.network-card span,
+.network-card div[data-selectable="true"] {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.device-node:hover {
+  z-index: 25 !important;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 4px;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
+}

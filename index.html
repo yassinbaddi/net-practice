@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function() {
+        try {
+          var origFetch = window.fetch ? window.fetch.bind(window) : null;
+          var _f = origFetch;
+          try {
+            Object.defineProperty(window, 'fetch', {
+              get: function() { return _f; },
+              set: function(v) { _f = v; },
+              configurable: true,
+              enumerable: true
+            });
+          } catch (e1) {
+            try {
+              Object.defineProperty(Object.getPrototypeOf(window), 'fetch', {
+                get: function() { return _f; },
+                set: function(v) { _f = v; },
+                configurable: true,
+                enumerable: true
+              });
+            } catch (e2) {}
+          }
+        } catch (e) {}
+
+        window.addEventListener('error', function(event) {
+          if (event && event.message && event.message.indexOf('fetch') !== -1 && event.message.indexOf('getter') !== -1) {
+            if (typeof event.preventDefault === 'function') {
+              event.preventDefault();
+            }
+            if (typeof event.stopImmediatePropagation === 'function') {
+              event.stopImmediatePropagation();
+            }
+            return true;
+          }
+        }, true);
+      })();
+    </script>
+    <title>NetPractice — 42 Network Simulation Lab</title>
+    <meta name="description" content="Interactive networking lab and simulation trainer based on NetPractice with 10 challenging levels, IP addressing, subnetting, routing tables, and real-time packet verification." />
+    <meta property="og:title" content="NetPractice — 42 Network Simulation Lab" />
+    <meta property="og:description" content="Interactive networking lab and simulation trainer based on NetPractice with 10 challenging levels, IP addressing, subnetting, routing tables, and real-time packet verification." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="font-sans antialiased overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
